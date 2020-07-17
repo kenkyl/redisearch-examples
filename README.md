@@ -10,7 +10,7 @@ RediSearch automatically creates and manages the multiple, complex indexes neede
 2. [FT.ADD](https://oss.redislabs.com/redisearch/Commands/#ftadd) --> add documents to the index
 - *redis-cli* example: `FT.ADD session_index session:<id> app_oid 9999 vnf_id 1234 thread_id 1 timestamp 1595004682 ktab 4321`
 
-3. [FT.SEARCH](https://oss.redislabs.com/redisearch/Commands/#ftsearch) / [FT.AGGREGATE](https://oss.redislabs.com/redisearch/Commands/#ftsearch) --> run queries against the index
+3. [FT.SEARCH](https://oss.redislabs.com/redisearch/Commands/#ftsearch) / [FT.AGGREGATE](https://oss.redislabs.com/redisearch/Commands/#ftaggregate) --> run queries against the index
 - *redis-cli* example: `FT.SEARCH session_index @ktab:{4321} @vnf_id:{1234} @thread_id:{1} @timestamp:[1595004682 +inf] SORTBY timestamp ASC`
 
 ## Notes
