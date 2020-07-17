@@ -8,11 +8,11 @@ REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 
 def main():
-    ## 0. connect to Redis (NOTE: redis_client added for example and is not needed if only using RediSearch commands)
+    ## 0a. connect to Redis (NOTE: redis_client added for example and is not needed if only using RediSearch commands)
     redis_client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, charset='utf-8', decode_responses=True)
     rsearch_client = redisearch.Client('session_index', host=REDIS_HOST, port=REDIS_PORT)
 
-    ## 0. test Redis connection
+    ## 0b. test Redis connection (not needed)
     print(redis_client.ping())
 
     ## 1. create the index with FT.CREATE
@@ -33,17 +33,17 @@ def main():
     ## 3. query the documents with FT.SEARCH
     interval = 3
 
-    ## 3.a -- search for all session documents with ktab = 1 
+    ## 3a. -- search for all session documents with ktab = 1 
     res = rsearch_client.search('@ktab:{1}')
     print(f'Session documents with ktab=1:\n{res}\n')
     time.sleep(interval)
 
-    ## 3.b -- search for all session documents with ktab = 2, vnf = 2
+    ## 3b. -- search for all session documents with ktab = 2, vnf = 2
     res = rsearch_client.search('@ktab:{2} @vnf_id:{2}')
     print(f'Session documents with ktab=2, vnf = 2:\n{res}\n')
     time.sleep(interval) 
 
-    ## 3.c -- seach for all session documents with ktab = 3, timestamp > (now - 5 sec), sort by timestamp (asc)
+    ## 3c. -- seach for all session documents with ktab = 3, timestamp > (now - 5 sec), sort by timestamp (asc)
     # NOTE: for complex queries, create an instance of the Query object
     query_string = '@ktab:{3} @timestamp:[' + str(int(time.time()) - 5000) + '+inf]'
     query = redisearch.Query(query_string).sort_by('timestamp', asc=True)

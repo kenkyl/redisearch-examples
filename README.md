@@ -15,7 +15,8 @@ RediSearch automatically creates and manages the multiple, complex indexes neede
 
 ## Notes
 - The Python RediSearch library, [redisearch-py](http://github.com/RedisLabs/redisearch-py), is imported separately from the standard [redis-py](https://github.com/andymccurdy/redis-py) library
+- Small random numbers are used for each of the document fields for simplicity's sake 
 - This script does **not** clear the keys in the redis database. To inspect the indexes and session documents created, run the KEYS command in the *redis-cli*. To clear out the database, run the FLUSHALL command in the *redis-cli* (don't run either of these commands in production!)
-- The more times you run the script, the more documents should be returned by the first two query examples
+- The more times you run the script without clearing the database, the more documents should be returned by the first two query examples
 - For complex queries, create an instance of the [Query](https://oss.redislabs.com/redisearch/python_client/#class_query) object, as in the third query example 
 - The TAG field type is used for most fields as they are assumed to be exact match queries only. If you need partial or range matching, then a NUMERIC or STRING field should be used accordingly
