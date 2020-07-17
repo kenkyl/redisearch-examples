@@ -14,7 +14,7 @@ RediSearch automatically creates and manages the multiple, complex indexes neede
 - *redis-cli* example: `FT.SEARCH session_index @ktab:{4321} @vnf_id:{1234} @thread_id:{1} @timestamp:[1595004682 +inf] SORTBY timestamp ASC`
 
 ## Notes
-- It is recommended to use the [Quick Start](https://oss.redislabs.com/redisearch/Quick_Start/) guide and launch a RediSearch Docker container for quick testing. You can also easily load the RediSearch module into an exisitng or new (Redis Enterprise)[https://redislabs.com/try-free/] database 
+- It is recommended to use the [Quick Start](https://oss.redislabs.com/redisearch/Quick_Start/) guide and launch a RediSearch Docker container for quick testing. You can also easily load the RediSearch module into an exisitng or new [Redis Enterprise](https://redislabs.com/try-free/) database 
 - The Python RediSearch library, [redisearch-py](http://github.com/RedisLabs/redisearch-py), is imported separately from the standard [redis-py](https://github.com/andymccurdy/redis-py) library
 - Small random numbers are used for each of the document fields for simplicity's sake 
 - This script does **not** clear the keys in the redis database. To inspect the indexes and session documents created, run the KEYS command in the *redis-cli*. To clear out the database, run the FLUSHALL command in the *redis-cli* (don't run either of these commands in production!)
